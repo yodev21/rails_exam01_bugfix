@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @blog.comments.find(params[:id])
     @comment.destroy
-    redirect_to
+    # エラー原因: リダイレクト先のパスが記述されていなかった
+    # Fix add (blog_path(@blog), notice: 'Comment was successfully destroyed.')
+    redirect_to blog_path(@blog), notice: 'Comment was successfully destroyed.'
   end
 
   private
