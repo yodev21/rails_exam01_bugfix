@@ -42,6 +42,8 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title)
+    # エラー原因: permitにcontentが不足していた
+    # Fix add (permit(:title) => permit(:title, :content))
+    params.require(:blog).permit(:title, :content)
   end
 end
