@@ -29,5 +29,7 @@
   <%= render 'comments/form', blog: @blog %>
 </p>
 
-<%= link_to 'Edit', '/blogs/#{blog.id}/edit' %> |
+<!-- # エラー原因: シングルクォートまた、blogとなっていた -->
+<!-- # 修正の意図: Fix  '/blogs/#{blog.id}/edit' => "/blogs/#{@blog.id}/edit" -->
+<%= link_to 'Edit', "/blogs/#{@blog.id}/edit" %> |
 <%= link_to 'Back', blogs_path %>
