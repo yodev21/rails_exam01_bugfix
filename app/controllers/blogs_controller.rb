@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update]
+  # エラー原因: destroyアクションに@blogにパラメータを格納する処理が抜けていた
+  # 修正の意図: Fix add :destroy
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
     @blogs = Blog.all
